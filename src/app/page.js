@@ -1,8 +1,7 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
 // --- SVG Icon Components ---
-// Yahan hum saare icons rakhenge
-
 const GithubIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
 );
@@ -19,11 +18,21 @@ const PhoneIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 );
 
+// Mobile Menu ke liye Icons
+const MenuIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+);
+
+const CloseIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+);
+
 
 // --- Main Page Component ---
 export default function PortfolioPage() {
   
-  // --- AAPKI SAARI JAANKARI YAHAN HAI ---
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const portfolioData = {
     name: "Prashant Tiwari",
     headline: "AI & Machine Learning Engineer crafting intelligent solutions from data.",
@@ -63,7 +72,6 @@ export default function PortfolioPage() {
   };
 
 
-  // --- JSX for the Page ---
   return (
     <div className="bg-[#121212] text-[#F5F5F7] font-sans">
       
@@ -77,15 +85,34 @@ export default function PortfolioPage() {
             <a href="#resume" className="text-gray-300 hover:text-white">Resume</a>
             <a href="#contact" className="text-gray-300 hover:text-white">Contact</a>
           </div>
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(true)} className="text-white">
+                <MenuIcon />
+            </button>
+          </div>
         </nav>
       </header>
 
-      <main className="pt-24">
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center md:hidden">
+            <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 text-white">
+                <CloseIcon />
+            </button>
+            <a onClick={() => setIsMenuOpen(false)} href="#projects" className="text-3xl font-bold text-gray-300 hover:text-white mb-8">Projects</a>
+            <a onClick={() => setIsMenuOpen(false)} href="#skills" className="text-3xl font-bold text-gray-300 hover:text-white mb-8">Skills</a>
+            <a onClick={() => setIsMenuOpen(false)} href="#resume" className="text-3xl font-bold text-gray-300 hover:text-white mb-8">Resume</a>
+            <a onClick={() => setIsMenuOpen(false)} href="#contact" className="text-3xl font-bold text-gray-300 hover:text-white">Contact</a>
+        </div>
+      )}
+
+
+      <main>
         
         {/* --- Hero Section --- */}
-        <section className="relative min-h-[80vh] flex items-center justify-center text-center px-6 overflow-hidden">
+        <section className="relative h-screen flex items-end justify-center text-center px-6 overflow-hidden pb-24 sm:pb-32">
           
-          <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
              <img 
                 src="/prashant.jpg" 
                 alt="Prashant Tiwari" 
@@ -93,7 +120,7 @@ export default function PortfolioPage() {
              />
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212] to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/70 to-transparent z-10"></div>
           
           <div className="relative z-20">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white">
