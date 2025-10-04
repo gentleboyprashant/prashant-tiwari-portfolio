@@ -8,7 +8,7 @@ const GithubIcon = () => (
 );
 
 const LinkedinIcon = () => (
-  <svg xmlns="http://www.w.3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
 );
 
 const MailIcon = () => (
@@ -24,7 +24,6 @@ const PhoneIcon = () => (
 export default function PortfolioPage() {
   
   // --- AAPKI SAARI JAANKARI YAHAN HAI ---
-  // Aapko kuch bhi badalna ho to bas yahan badlein, poori website apne aap update ho jayegi!
   const portfolioData = {
     name: "Prashant Tiwari",
     headline: "AI & Machine Learning Engineer crafting intelligent solutions from data.",
@@ -84,9 +83,9 @@ export default function PortfolioPage() {
       <main className="pt-24">
         
         {/* --- Hero Section --- */}
-        <section className="relative min-h-screen flex items-end justify-center text-center px-6 overflow-hidden pb-32">
+        <section className="relative min-h-[80vh] flex items-center justify-center text-center px-6 overflow-hidden">
           
-          <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
              <img 
                 src="/prashant.jpg" 
                 alt="Prashant Tiwari" 
@@ -94,7 +93,7 @@ export default function PortfolioPage() {
              />
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212] to-transparent z-10"></div>
           
           <div className="relative z-20">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white">
@@ -179,8 +178,8 @@ export default function PortfolioPage() {
         {/* --- Contact Section --- */}
         <footer id="contact" className="bg-black text-white py-16">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold mb-4">Let's build something amazing.</h2>
-            <p className="text-gray-400 max-w-xl mx-auto mb-8">I'm currently seeking AI Engineering and Data Science roles. If you have an exciting opportunity or just want to connect, my inbox is always open.</p>
+            <h2 className="text-3xl font-bold mb-4">Let&apos;s build something amazing.</h2>
+            <p className="text-gray-400 max-w-xl mx-auto mb-8">I&apos;m currently seeking AI Engineering and Data Science roles. If you have an exciting opportunity or just want to connect, my inbox is always open.</p>
             
             <div className="flex justify-center items-center space-x-6">
               <a href={`mailto:${portfolioData.email}`} className="text-gray-400 hover:text-white transition-colors" title="Email"><MailIcon /></a>
